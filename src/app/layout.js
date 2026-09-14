@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "NIT Daily Work Tracker",
+  title: "My Day Book",
   description: "Personal productivity and work-record application",
 };
 

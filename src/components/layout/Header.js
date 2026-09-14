@@ -14,7 +14,7 @@ export default function Header({ toggleSidebar, toggleTheme, isDarkMode }) {
           >
             <MenuIcon className="w-6 h-6" />
           </button>
-          <h2 className="text-xl font-bold tracking-tight text-slate-800 dark:text-zinc-100 hidden sm:block">NIT Daily Work Tracker</h2>
+          <h2 className="text-xl font-bold tracking-tight text-slate-800 dark:text-zinc-100 hidden sm:block">🇳​🇮​🇹​🇨​ 🇩​🇦​🇮​🇱​🇾​ 🇼​🇴​🇷​🇰​ 🇹​🇷​🇦​🇨​🇰​🇪​🇷​</h2>
         </div>
         
         <div className="flex items-center space-x-2 sm:space-x-4">

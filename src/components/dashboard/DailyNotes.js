@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import { getDailyNote, saveDailyNote } from "@/lib/storage/workStorage";
 import { formatDateLong } from "@/lib/utils/timeUtils";
@@ -51,16 +50,38 @@ export default function DailyNotes({ selectedDate }) {
   };
 
   return (
-    <FadeIn delay={0.5} direction="left" className="bg-white dark:bg-zinc-900 rounded-xl border border-slate-200 dark:border-zinc-800 shadow-sm p-5 flex flex-col h-full min-h-[300px]">
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-lg font-semibold text-slate-800 dark:text-zinc-100 flex items-center">
-          <BookIcon className="w-5 h-5 mr-2 text-blue-500" /> Daily Notes
+    <FadeIn delay={0.3} direction="up" className="bg-white dark:bg-zinc-900 rounded-xl border border-slate-200 dark:border-zinc-800 shadow-sm p-5 flex flex-col h-full min-h-[300px] w-full max-w-full overflow-hidden">
+      <div className="flex items-center justify-between mb-4 gap-2">
+        <h2 className="text-lg font-semibold text-slate-800 dark:text-zinc-100 flex items-center truncate">
+          <BookIcon className="w-5 h-5 mr-2 text-blue-500 flex-shrink-0" /> <span className="hidden sm:inline">Daily Notes</span><span className="sm:hidden">Notes</span>
         </h2>
-        {hasUnsavedChanges && (
-          <span className="text-xs font-medium text-amber-500 flex items-center">
-            <span className="w-2 h-2 rounded-full bg-amber-500 mr-1 animate-pulse"></span> Unsaved
-          </span>
-        )}
+        <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+          {hasUnsavedChanges && (
+            <span className="text-xs font-medium text-amber-500 flex items-center">
+              <span className="w-2 h-2 rounded-full bg-amber-500 mr-1.5 animate-pulse"></span> 
+              <span className="hidden sm:inline">Unsaved</span>
+            </span>
+          )}
+          <button 
+            onClick={handleSave}
+            disabled={!hasUnsavedChanges || isSaving}
+            className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-md sm:rounded-lg text-sm font-medium transition-all flex justify-center items-center ${
+              !hasUnsavedChanges 
+                ? "bg-slate-100 dark:bg-zinc-800 text-slate-400 dark:text-zinc-500 cursor-not-allowed" 
+                : isSaving
+                ? "bg-blue-500 text-white cursor-wait"
+                : "bg-slate-800 hover:bg-slate-900 dark:bg-slate-100 dark:hover:bg-white text-white dark:text-slate-900 shadow-sm"
+            }`}
+          >
+            {isSaving ? (
+              <><SpinnerIcon className="w-4 h-4 sm:mr-2 animate-spin" /> <span className="hidden sm:inline">Saving...</span></>
+            ) : !hasUnsavedChanges ? (
+              <><CheckIcon className="w-4 h-4 sm:mr-2" /> <span className="hidden sm:inline">Saved</span></>
+            ) : (
+              <span className="flex items-center"><svg className="w-4 h-4 sm:mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" /></svg> <span className="hidden sm:inline">Save Note</span></span>
+            )}
+          </button>
+        </div>
       </div>
       
       <textarea 
@@ -70,30 +91,6 @@ export default function DailyNotes({ selectedDate }) {
         className="flex-1 w-full p-3 bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-lg resize-none text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-slate-700 dark:text-zinc-300 leading-relaxed"
         placeholder={`Any thoughts, reflections, or reminders for ${formatDateLong(selectedDate)}?`}
       ></textarea>
-      
-      <button 
-        onClick={handleSave}
-        disabled={!hasUnsavedChanges || isSaving}
-        className={`mt-4 w-full px-4 py-2.5 rounded-lg font-medium transition-all flex justify-center items-center ${
-          !hasUnsavedChanges 
-            ? "bg-slate-100 dark:bg-zinc-800 text-slate-400 dark:text-zinc-500 cursor-not-allowed" 
-            : isSaving
-            ? "bg-blue-500 text-white cursor-wait"
-            : "bg-slate-800 hover:bg-slate-900 dark:bg-slate-100 dark:hover:bg-white text-white dark:text-slate-900 shadow-sm"
-        }`}
-      >
-        {isSaving ? (
-          <>
-            <SpinnerIcon className="w-4 h-4 mr-2 animate-spin" /> Saving...
-          </>
-        ) : !hasUnsavedChanges ? (
-          <>
-            <CheckIcon className="w-4 h-4 mr-2" /> Saved
-          </>
-        ) : (
-          "Save Note"
-        )}
-      </button>
     </FadeIn>
   );
 }

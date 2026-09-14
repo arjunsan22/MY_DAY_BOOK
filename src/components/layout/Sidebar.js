@@ -1,6 +1,6 @@
 "use client";
-
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 const navItems = [
@@ -29,7 +29,10 @@ export default function Sidebar({ isOpen, setIsOpen }) {
         }`}
       >
         <div className="flex items-center justify-between h-16 px-6 border-b border-slate-200 dark:border-zinc-800">
-          <span className="text-lg font-bold tracking-tight text-blue-600 dark:text-blue-400">NIT Tracker</span>
+          <div className="flex items-center gap-2">
+            <Image src="/clock.png" alt="Logo" width={28} height={28} className="rounded-md shadow-sm" />
+            <span className="text-lg font-bold tracking-tight text-slate-800 dark:text-blue-400">🇲​🇾​ 🇩​🇦​🇾​ 🇧​🇴​🇴​🇰​</span>
+          </div>
           <button 
             className="lg:hidden p-2 text-slate-500 hover:text-slate-700 dark:text-zinc-400 dark:hover:text-zinc-200"
             onClick={() => setIsOpen(false)}
