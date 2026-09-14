@@ -1,89 +1,90 @@
-<div align="center">
-  <img src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/nextjs/nextjs.png" alt="Next.js" width="80" height="80" />
-  
-  # 📘 My Day Book
-  
-  **A beautiful, lightning-fast personal daily work and productivity tracker.** <br/>
-  Built specifically to maintain chronological logs of daily tasks, monitor active time versus break time, and review historical productivity metrics—all with a premium user interface.
-</div>
+# 📘 My Day Book
 
----
+A beautiful, lightning-fast personal daily work and productivity tracker.
+
+Built to maintain chronological logs of daily tasks, track active work and break time, and review daily and monthly productivity.
 
 ## ✨ Features
 
-- **⏱️ Active Work Timer:** Start a session with one click and let the tracker calculate your real-time duration. The timer continues running perfectly even if your system sleeps or the browser closes.
-- **📅 Interactive Timeline:** View your daily activities structured beautifully on a chronological timeline. Overlapping times are automatically highlighted!
-- **📊 Productivity Analytics:** Instantly see your total logged time versus actual work time (excluding breaks). Detailed monthly and daily category breakdowns are available in the Reports section.
-- **📝 Daily Notes:** Keep track of ad-hoc thoughts or reminders tied to specific dates.
-- **💾 Local First & Private:** All data is safely stored in your browser's `localStorage`. No accounts, no servers, complete privacy.
-- **🔄 Import/Export:** Easily backup your work history as a JSON file and restore it at any time.
-- **🎨 Premium UI/UX:** Crafted with **TailwindCSS** and powered by **GSAP** for buttery-smooth animations, staggered list entrances, and physics-based modal bounces.
+* ⏱️ **Active Work Timer** — Start and stop work sessions with automatic duration tracking.
+* 📅 **Daily Timeline** — View activities chronologically for each date.
+* 📊 **Productivity Analytics** — Review total logged time, actual work time, breaks, and category statistics.
+* 📝 **Daily Notes** — Add notes and reminders for specific dates.
+* 💾 **Local First & Private** — Data is stored locally in the browser using `localStorage`.
+* 🔄 **Import / Export** — Backup and restore work history using JSON files.
+* 🎨 **Premium UI/UX** — Modern responsive interface with Tailwind CSS and smooth animations.
 
 ## 🛠️ Tech Stack
 
-- **Framework:** [Next.js](https://nextjs.org/) (React)
-- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
-- **Animations:** [GSAP (GreenSock)](https://gsap.com/) & `@gsap/react`
-- **Icons:** Custom SVG / Heroicons inspired
-- **Storage:** Browser `localStorage` API
+* **Framework:** Next.js (React)
+* **Language:** TypeScript
+* **Styling:** Tailwind CSS
+* **Animations:** GSAP
+* **Icons:** SVG / Icon library
+* **Storage:** Browser `localStorage`
 
 ## 🚀 Getting Started
 
-Follow these instructions to get a copy of the project up and running on your local machine.
-
 ### Prerequisites
-Make sure you have [Node.js](https://nodejs.org/) installed on your machine.
+
+Make sure you have [Node.js](https://nodejs.org/) installed.
 
 ### Installation
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/yourusername/My_Day_Book.git
-   cd My_Day_Book
-   ```
+Clone the repository:
 
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
+```bash
+git clone https://github.com/arjunsan22/MY_DAY_BOOK.git
+cd MY_DAY_BOOK
+```
 
-3. **Run the development server:**
-   ```bash
-   npm run dev
-   ```
+Install dependencies:
 
-4. **Open your browser:**
-   Navigate to [http://localhost:3000](http://localhost:3000) to see the application in action.
+```bash
+npm install
+```
+
+Run the development server:
+
+```bash
+npm run dev
+```
+
+Open the application in your browser:
+
+```text
+http://localhost:3000
+```
 
 ## 📁 Project Structure
 
 ```text
 My_Day_Book/
-├── public/                 # Static assets
+├── public/
 ├── src/
-│   ├── app/                # Next.js App Router (Pages & Layout)
+│   ├── app/
 │   ├── components/
-│   │   ├── dashboard/      # Main dashboard components (Timeline, Stats, etc.)
-│   │   ├── layout/         # Sidebar, Header, Modals
-│   │   ├── ui/             # Reusable UI elements (FadeIn, ConfirmDialog)
-│   │   └── work/           # Work logic components (StartWork, ActiveCard)
-│   └── lib/                # Utilities and Storage logic
-│       ├── storage/        # LocalStorage CRUD operations
-│       ├── utils/          # Time and Date formatting utilities
-│       └── constants.js    # Category data and config
-└── package.json            # Project metadata and dependencies
+│   ├── lib/
+│   └── utils/
+├── package.json
+└── README.md
 ```
 
-## 🤝 Contributing
+## 📌 Project Purpose
 
-This is a personal project, but suggestions, bug reports, and pull requests are always welcome! 
+My Day Book is a personal work-tracking application designed to maintain an accurate record of daily activities.
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+Example:
+
+```text
+09:00 AM - 11:00 AM  → PHP Learning
+11:00 AM - 01:00 PM  → Playwright Testing
+01:00 PM - 02:00 PM  → Lunch Break
+04:00 PM - 06:00 PM  → Computer / Lab Work
+```
+
+The application is designed for personal productivity tracking and maintaining useful records of daily technical work.
 
 ## 📜 License
 
-Distributed under the MIT License.
+This project is for personal use.
