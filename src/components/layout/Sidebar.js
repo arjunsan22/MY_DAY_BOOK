@@ -31,7 +31,7 @@ export default function Sidebar({ isOpen, setIsOpen }) {
         <div className="flex items-center justify-between h-16 px-6 border-b border-slate-200 dark:border-zinc-800">
           <div className="flex items-center gap-2">
             <Image src="/clock.png" alt="Logo" width={28} height={28} className="rounded-md shadow-sm" />
-            <span className="text-lg font-bold tracking-tight text-slate-800 dark:text-blue-400">🇲​🇾​ 🇩​🇦​🇾​ 🇧​🇴​🇴​🇰​</span>
+            <span className="text-lg font-bold tracking-tight text-slate-800 dark:text-blue-400">MY DAY BOOK</span>
           </div>
           <button 
             className="lg:hidden p-2 text-slate-500 hover:text-slate-700 dark:text-zinc-400 dark:hover:text-zinc-200"
