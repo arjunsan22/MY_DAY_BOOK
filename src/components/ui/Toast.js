@@ -16,7 +16,7 @@ export default function ToastContainer() {
     const handleToast = (e) => {
       const id = Date.now() + Math.random();
       setToasts((prev) => [...prev, { id, ...e.detail }]);
-      
+
       setTimeout(() => {
         setToasts((prev) => prev.filter((t) => t.id !== id));
       }, 3000);
@@ -29,21 +29,21 @@ export default function ToastContainer() {
   if (toasts.length === 0) return null;
 
   return (
-    <div className="fixed bottom-4 right-4 z-50 flex flex-col gap-2 pointer-events-none">
+    <div className="fixed top-5 right-5 z-[9999] flex flex-col gap-2.5 pointer-events-none">
       {toasts.map((t) => (
         <div 
           key={t.id} 
-          className={`px-4 py-3 rounded-lg shadow-lg text-sm font-medium flex items-center transform transition-all duration-300 animate-fade-in-up ${
+          className={`pointer-events-auto px-4 py-2.5 rounded-xl shadow-lg border text-xs font-semibold tracking-wide flex items-center gap-2.5 backdrop-blur-md transition-all duration-300 ${
             t.type === "success" 
-              ? "bg-green-600 text-white" 
+              ? "bg-emerald-950/90 text-emerald-200 border-emerald-500/30 shadow-emerald-950/20" 
               : t.type === "error" 
-              ? "bg-red-600 text-white"
-              : "bg-slate-800 text-white"
+              ? "bg-rose-950/90 text-rose-200 border-rose-500/30 shadow-rose-950/20"
+              : "bg-zinc-900/90 text-zinc-100 border-zinc-700/40 shadow-black/30"
           }`}
         >
-          {t.type === "success" && <CheckIcon className="w-4 h-4 mr-2" />}
-          {t.type === "error" && <AlertIcon className="w-4 h-4 mr-2" />}
-          {t.message}
+          {t.type === "success" && <CheckIcon className="w-4 h-4 text-emerald-400 flex-shrink-0" />}
+          {t.type === "error" && <AlertIcon className="w-4 h-4 text-rose-400 flex-shrink-0" />}
+          <span>{t.message}</span>
         </div>
       ))}
     </div>
