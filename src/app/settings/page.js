@@ -5,8 +5,10 @@ import FadeIn from "@/components/ui/FadeIn";
 import { toast } from "@/components/ui/Toast";
 import ConfirmDialog from "@/components/ui/ConfirmDialog";
 import { getCurrentDate } from "@/lib/utils/timeUtils";
+import { useTheme } from "@/context/ThemeContext";
 
 export default function SettingsPage() {
+  const { theme, setTheme, isDarkMode } = useTheme();
   const [isMounted, setIsMounted] = useState(false);
   const fileInputRef = useRef(null);
   
@@ -116,6 +118,51 @@ export default function SettingsPage() {
 
       <FadeIn staggerChildren={true} stagger={0.1} delay={0.2} className="space-y-6">
         
+        {/* Appearance & Theme */}
+        <div className="bg-white dark:bg-zinc-900 rounded-xl border border-slate-200 dark:border-zinc-800 shadow-sm overflow-hidden">
+          <div className="p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div>
+              <h2 className="text-lg font-semibold text-slate-800 dark:text-zinc-100 flex items-center">
+                {isDarkMode ? (
+                  <MoonIcon className="w-5 h-5 mr-2 text-indigo-400" />
+                ) : (
+                  <SunIcon className="w-5 h-5 mr-2 text-amber-500" />
+                )}
+                Appearance & Theme
+              </h2>
+              <p className="text-sm text-slate-500 dark:text-zinc-400 mt-1 max-w-lg">
+                Choose between White (Light) and Dark mode. Your preference is automatically saved.
+              </p>
+            </div>
+            <div className="inline-flex p-1 bg-slate-100 dark:bg-zinc-800/80 rounded-lg border border-slate-200/60 dark:border-zinc-700/60">
+              <button
+                type="button"
+                onClick={() => setTheme("light")}
+                className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-md text-sm font-medium transition-all ${
+                  !isDarkMode
+                    ? "bg-white text-slate-900 shadow-sm"
+                    : "text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-zinc-100"
+                }`}
+              >
+                <SunIcon className="w-4 h-4 text-amber-500" />
+                White Mode
+              </button>
+              <button
+                type="button"
+                onClick={() => setTheme("dark")}
+                className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-md text-sm font-medium transition-all ${
+                  isDarkMode
+                    ? "bg-zinc-900 text-white shadow-sm"
+                    : "text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-zinc-100"
+                }`}
+              >
+                <MoonIcon className="w-4 h-4 text-indigo-400" />
+                Dark Mode
+              </button>
+            </div>
+          </div>
+        </div>
+
         {/* Export Data */}
         <div className="bg-white dark:bg-zinc-900 rounded-xl border border-slate-200 dark:border-zinc-800 shadow-sm overflow-hidden">
           <div className="p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
@@ -243,3 +290,10 @@ function UploadIcon(props) {
 function TrashIcon(props) {
   return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
 }
+function SunIcon(props) {
+  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+}
+function MoonIcon(props) {
+  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+}
+
